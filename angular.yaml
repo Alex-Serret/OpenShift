@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: default
+  name: angular-app-deployment
+spec:
+  replicas: 2 # Número inicial de réplicas
+  selector:
+    matchLabels:
+      app: angular-app
+  template:
+    metadata:
+      labels:
+        app: angular-app
+    spec:
+      containers:
+      - name: angular-app-container
+        image: httpd:latest # Reemplaza con tu imagen Angular
+        ports:
+        - containerPort: 80 # Puerto en el que la aplicación Angular se ejecuta
